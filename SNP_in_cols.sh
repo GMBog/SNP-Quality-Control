@@ -18,4 +18,4 @@ rm SNP_in_columns.txt
 rm Ids
 
 module load R
-Rscript Rcode_QCsnp.R
+Rscript QC-SNP.R
