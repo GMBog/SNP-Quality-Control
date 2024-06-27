@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=SNPdata
-#SBATCH --mail-user=@gmail.com
+#SBATCH --mail-user=
 #SBATCH --mail-type=END,FAIL
 #SBATCH --ntasks=1 
 #SBATCH --cpus-per-task=1
