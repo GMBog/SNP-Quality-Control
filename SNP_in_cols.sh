@@ -8,14 +8,15 @@
 #SBATCH --time=90:00:00                                 #time per each job
 
 #Open the SNP file
-awk '{print $1}' ~/dirfiles/GenotypesFile > Ids
-awk '{print $2}' ~/dirfiles/GenotypeFile | sed 's/./& /g' > SNP_in_columns.txt
+awk '{print $1}' ~/dirfiles/GenotypesFile > Ids                                  #Separate IDs
+awk '{print $2}' ~/dirfiles/GenotypeFile | sed 's/./& /g' > SNP_in_columns.txt   #Split SNP columns with blank-spaces
 
-#Paste ids to the SNP file
+#Paste IDs to SNPs (separate by blank-space)
 paste -d ' ' Ids SNP_in_columns.txt > SNPdata.txt
 
 rm SNP_in_columns.txt
 rm Ids
 
+#Run the quality control for SNP using R
 module load R
 Rscript QC-SNP.R
