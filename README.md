@@ -1,8 +1,30 @@
-Bash and R scripts to do quality control (QC) of SNP data. 
+# Genotype Processing Scripts  
 
-1. Change the format of SNP data from ID (col 1) and SNPs (col 2), to ID (col 1) and each SNP in a different column.
-2. Quality control of SNP data
-  a. Call Rate
-  b. Call Freq
-  c. MAF
-3. Computing Linear and Gaussian Kernels 
+This repository provides **Bash** and **R** scripts to efficiently process and analyze genotype files.  
+
+## Features  
+
+### 1. Genotype File Processing  
+- Work with genotype files, including `chromosome.data` and `imputed_genotypefiles`.   
+
+### 2. File Comparison  
+- Compare genotype files to:  
+  - Identify **SNP removals**.  
+  - Detect updates in genotype files.  
+
+### 3. Quality Control (QC)  
+Perform quality control checks on genotype data, including:  
+- **Call Rate**: Ensure sufficient SNP call coverage.  
+- **Call Frequency**: Verify the frequency of SNP calls.  
+- **Minor Allele Frequency (MAF)**: Exclude SNPs with low-frequency alleles.  
+
+### 4. Kernel Computation  
+- Compute:  
+  - **Linear kernels**.  
+  - **Gaussian kernels**.  
+
+## Requirements  
+
+### Software  
+- **Bash**: For processing pipeline scripts.  
+- **R**: Version 4.0+ recommended.  
