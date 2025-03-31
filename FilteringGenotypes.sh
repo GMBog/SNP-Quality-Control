@@ -1,18 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=editGeno
-#SBATCH --mail-user=@gmail.com
-#SBATCH --mail-type=END,FAIL
-#SBATCH --ntasks=1 
-#SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=10gb                   
-#SBATCH --time=90:00:00  
-
 
 # PART 1: Create list of SNP positions to be removed from genotype files
 
 # Define file paths
-old_SNPfile="/blue/mateescu/martinezbogg.wisc/methane_GCI/genotype_files/USDA-AGILGenotypes/chromosome.data"
-new_SNPfile="/blue/mateescu/martinezbogg.wisc/methane_GCI/genotype_files/USDA-DFRCGenotypes/chromosome.data"
+old_SNPfile="/Data1/chromosome.data"
+new_SNPfile="/Data2/chromosome.data"
 output_remove_old="remove_from_old"
 output_remove_new="remove_from_new"
 
@@ -44,8 +36,7 @@ echo "- $output_remove_new"
 # PART 2: Remove SNPs from genotype files using the list of removal positions
 
 # SNP file 1 - Old SNP file updated due to potential marker remotions 
-
-input="/blue/mateescu/martinezbogg.wisc/methane_GCI/genotype_files/USDA-AGILGenotypes/imputed_genotypes_herd51019026.txt"
+input="/Data1/imputed_genotypes1.txt"
 
 # Count markers in original file
 awk '{print $4}' "$input"  | awk '{print length($0)}' | head -n1
@@ -76,8 +67,7 @@ rm snpfile colsfile tmpr ids
 
 
 # SNP file 2 - New SNP file adjusted to match with the old 
-
-input="/blue/mateescu/martinezbogg.wisc/methane_GCI/genotype_files/USDA-DFRCGenotypes/imputed_genotypes.txt"
+input="/Data2/imputed_genotypes2.txt"
 
 # Count markers in original file
 awk '{print $4}' "$input"  | awk '{print length($0)}' | head -n1
