@@ -4,7 +4,7 @@ This repository provides **Bash** and **R** scripts to efficiently process and a
 
 ## Features  
 
-### 1. Genotype File Processing (SNP_in_cols.jl and FilteringGenotypes.sh) 
+### 1. Genotype File Processing (SNPinCols.jl and FilteringGenotypes.sh) 
 - Work with genotype files, including `chromosome.data` and `imputed_genotypefiles`.   
 
 ### 2. File Comparison (FilteringGenotypes.sh)  
