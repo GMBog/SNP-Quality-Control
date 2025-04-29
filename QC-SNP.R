@@ -57,20 +57,24 @@ write.table(SNP_impdata, file="~/SNP_imputedQC.txt", row.names = F, col.names = 
 
 
 
-### Computing G relationship matrix assuming LINEAR kernel
+### Computing G relationship matrix
 
 #Read genotypic data
-X = as.matrix(SNP_impdata[,-1])
+X <- as.matrix(SNP_impdata[,-1])
 
-#Number of markers
-p = ncol(X)
-p
+## VanRaden method 1:
+#Scale matrix using allelic frequencies
+freq_p <- colMeans(SNP_impdata) / 2
+S <- sweep(SNP_impdata, 2, 2 * freq_p, "-")
+S <- as.matrix(sweep(S, 2, sqrt(2 * freq_p * (1 - freq_p)), "/"))
 
+## VanRaden method 2:
 #Scale matrix to center in 0 and variance in 1
-S = scale(X, center =  TRUE, scale = TRUE)
+S <- scale(X, center =  TRUE, scale = TRUE)
 
-#Compute the G matrix as the crossproduct between the scale matrix divided number of markers (S%*%t(S))/p
-G = tcrossprod(S)/p
+#Compute the G matrix as the crossproduct between the scale matrix divided number of markers (S%*%t(S))/n
+n <- ncol(X)
+G <- tcrossprod(S)/n
 dim(G)
 
 #Save G matrix
